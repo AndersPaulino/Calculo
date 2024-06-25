@@ -137,7 +137,7 @@ Testa os métodos de serviço.
 * Lombok
 * PostgreSQL Driver
 
-  ## Plugins
-  * Jacoco - Ferramenta de análise para cobertura de código.
+## Plugins
+* Jacoco - Ferramenta de análise para cobertura de código.
   
 [Inicio](#calculo)<br>
