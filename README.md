@@ -1,3 +1,4 @@
+
 # Calculo
 
 Este projeto é uma API Spring Boot que fornece operações de cálculo simples. A API recebe uma lista de números inteiros e retorna a soma dos números e o maior número na lista. O projeto inclui endpoints REST para processar as requisições, bem como testes unitários e de integração para validar as funcionalidades.
@@ -135,5 +136,8 @@ Testa os métodos de serviço.
 * Spring Boot Starter Data JPA
 * Lombok
 * PostgreSQL Driver
+
+  ## Plugins
+  * Jacoco - Ferramenta de análise para cobertura de código.
   
 [Inicio](#calculo)<br>
