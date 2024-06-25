@@ -23,10 +23,10 @@ public class EntradaTest {
     @DisplayName("Teste do construtor com argumentos")
     void testAllArgsConstructor() {
         List<Integer> lista = Arrays.asList(1, 2, 3);
-        Entrada entrada = new Entrada(1L, lista);
+        Entrada entrada = new Entrada(lista);
 
         assertNotNull(entrada);
-        assertEquals(1L, entrada.getId());
+        assertEquals(0, entrada.getId());
         assertEquals(lista, entrada.getLista());
     }
 
@@ -35,10 +35,9 @@ public class EntradaTest {
     void testGettersAndSetters() {
         List<Integer> lista = Arrays.asList(4, 5, 6);
         Entrada entrada = new Entrada();
-        entrada.setId(2L);
         entrada.setLista(lista);
 
-        assertEquals(2L, entrada.getId());
+        assertEquals(0, entrada.getId());
         assertEquals(lista, entrada.getLista());
     }
 }

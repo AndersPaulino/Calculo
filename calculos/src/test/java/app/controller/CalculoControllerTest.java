@@ -34,8 +34,8 @@ public class CalculoControllerTest {
 	void setup() {
 
 		List<Saida> lista = new ArrayList<>();
-		lista.add(new Saida(1L, 10, 3));
-		lista.add(new Saida(2L, 20, 6));
+		lista.add(new Saida(10, 3));
+		lista.add(new Saida(20, 6));
 
 		when(calculoService.findAll()).thenReturn(lista);
 
