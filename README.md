@@ -57,8 +57,7 @@ Representa a entrada da API com uma lista de números inteiros.
   @Setter
   @NoArgsConstructor
   @AllArgsConstructor
-  public class Entrada {
-      private long id;
+  public class Entrada extends AbstractEntity{
       private List<Integer> lista;
   }  
 ```
@@ -71,10 +70,7 @@ Representa a saída da API com a soma e o maior número da lista.
   @NoArgsConstructor
   @AllArgsConstructor
   @Entity
-  public class Saida {
-      @Id
-      @GeneratedValue(strategy = GenerationType.IDENTITY)
-      private long id;
+  public class Saida extends AbstractEntity{
       private int soma;
       private int maiorNumeroLista;
   }
