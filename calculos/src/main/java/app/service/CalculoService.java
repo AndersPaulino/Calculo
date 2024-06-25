@@ -19,7 +19,7 @@ public class CalculoService {
 	
 	public Saida calcular(Entrada entrada) {
 
-		if (entrada == null || entrada.getLista() == null || entrada.getLista().isEmpty()) {
+		if (entrada.getLista().isEmpty()) {
 			throw new IllegalArgumentException("A lista de entrada não pode ser nula ou vazia");
 		}
 
@@ -33,7 +33,7 @@ public class CalculoService {
 	
 	
 	public List<Saida> findAll(){
-		return this.calculoRepository.findAll();
+		return calculoRepository.findAll();
 	}
 	
 	public int somar(List<Integer> lista) {
