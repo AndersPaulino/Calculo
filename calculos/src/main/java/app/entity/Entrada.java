@@ -11,10 +11,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Entrada {
+public class Entrada extends AbstractEntity{
 
-	private long id;
-	
 	private List<Integer> lista;
 
 }

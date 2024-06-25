@@ -14,12 +14,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Saida {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
+public class Saida extends AbstractEntity {
+
 	private int soma;
 	private int maiorNumeroLista;
 	

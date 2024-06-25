@@ -39,14 +39,11 @@ public class CalculoServiceTest {
 	@Test
 	@DisplayName("Teste findAll")
 	void testFindAll() {
-		// Mock do comportamento do repository
-		List<Saida> saidas = singletonList(new Saida(1L, 10, 20)); // Exemplo de lista de saídas simulada
+		List<Saida> saidas = singletonList(new Saida(10, 20));
 		when(calculoRepository.findAll()).thenReturn(saidas);
 
-		// Chamada do método do serviço
 		List<Saida> result = calculoService.findAll();
 
-		// Verificação dos resultados
 		assertEquals(saidas.size(), result.size());
 		assertEquals(saidas.get(0).getId(), result.get(0).getId());
 		assertEquals(saidas.get(0).getSoma(), result.get(0).getSoma());

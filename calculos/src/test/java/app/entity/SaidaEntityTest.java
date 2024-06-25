@@ -9,16 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class SaidaEntityTest {
     @Test
-    @DisplayName("Teste do getId e setId")
-    void testGetSetId() {
+    @DisplayName("Teste do getId")
+    void testGetId() {
         Saida saida = new Saida();
 
-        saida.setId(1L);
-        assertEquals(1L, saida.getId());
-
-        assertEquals(1L, saida.getId());
-
-        saida.setId(10L);
-        assertEquals(10L, saida.getId());
+        assertEquals(0, saida.getId());
     }
 }
