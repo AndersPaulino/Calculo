@@ -2,6 +2,7 @@ package app.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -33,8 +34,8 @@ public class CalculoControllerTest {
 	void setup() {
 
 		List<Saida> lista = new ArrayList<>();
-		lista.add(new Saida(1, 10, 3));
-		lista.add(new Saida(2, 20, 6));
+		lista.add(new Saida(1L, 10, 3));
+		lista.add(new Saida(2L, 20, 6));
 
 		when(calculoService.findAll()).thenReturn(lista);
 
@@ -84,6 +85,17 @@ public class CalculoControllerTest {
 		ResponseEntity<Saida> response = calculoController.calcular(entrada);
 
 		assertEquals(HttpStatus.BAD_GATEWAY, response.getStatusCode());
+	}
+
+	@Test
+	@DisplayName("Teste findAll com exceção")
+	void testFindAllException() {
+		doThrow(RuntimeException.class).when(calculoService).findAll();
+
+		ResponseEntity<List<Saida>> response = calculoController.findAll();
+
+		assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+		assertEquals(null, response.getBody());
 	}
 
 }

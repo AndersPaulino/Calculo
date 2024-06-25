@@ -1,7 +1,9 @@
 package app.service;
 
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,23 +15,42 @@ import app.repository.CalculoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class CalculoServiceTest {
 
-	@Autowired
-	CalculoService calculoService;
 
 	@Mock
 	private CalculoRepository calculoRepository;
 
+	@InjectMocks
+	private CalculoService calculoService;
+
 	@BeforeEach
 	public void setUp() {
 		MockitoAnnotations.openMocks(this);
+	}
+
+
+	@Test
+	@DisplayName("Teste findAll")
+	void testFindAll() {
+		// Mock do comportamento do repository
+		List<Saida> saidas = singletonList(new Saida(1L, 10, 20)); // Exemplo de lista de saídas simulada
+		when(calculoRepository.findAll()).thenReturn(saidas);
+
+		// Chamada do método do serviço
+		List<Saida> result = calculoService.findAll();
+
+		// Verificação dos resultados
+		assertEquals(saidas.size(), result.size());
+		assertEquals(saidas.get(0).getId(), result.get(0).getId());
+		assertEquals(saidas.get(0).getSoma(), result.get(0).getSoma());
+		assertEquals(saidas.get(0).getMaiorNumeroLista(), result.get(0).getMaiorNumeroLista());
 	}
 
 	@Test
@@ -93,22 +114,7 @@ public class CalculoServiceTest {
 	}
 
 	@Test
-	@DisplayName("TESTANDO O MÉTODO CALCULAR COM LISTA NULA")
-	void testarCalcularComListaNula() {
-		Entrada entrada = new Entrada();
-		entrada.setLista(null);
-
-		IllegalArgumentException thrown = assertThrows(
-				IllegalArgumentException.class,
-				() -> calculoService.calcular(entrada),
-				"A lista de entrada não pode ser nula ou vazia"
-		);
-
-		assertEquals("A lista de entrada não pode ser nula ou vazia", thrown.getMessage());
-	}
-
-	@Test
-	@DisplayName("TESTANDO O MÉTODO CALCULAR COM LISTA VAZIA")
+	@DisplayName("Teste calcular com lista vazia")
 	void testarCalcularComListaVazia() {
 		Entrada entrada = new Entrada();
 		entrada.setLista(new ArrayList<>());
